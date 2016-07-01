@@ -16,10 +16,23 @@ import com.gmt.model.Model;
  */
 public class Screen extends JComponent {
 
-	private Model model = new Model();
-	private Dimension size = new Dimension(model.getWidth(), model.getHeight());
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Model model;
+	private Dimension size;
 
 	private Image image;
+
+	public Screen(Model model) {
+		this.model = model;
+		initComponent();
+	}
+
+	private void initComponent() {
+		size = new Dimension(model.getWidth(), model.getHeight());
+	}
 
 	public void setImage(Image image) {
 		this.image = image;
