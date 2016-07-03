@@ -1,10 +1,20 @@
 package com.gmt.model;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import com.gmt.view.AnimateWindow;
+
 public class Toolbar extends JMenuBar {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public Toolbar() {
 		initComponent();
@@ -12,6 +22,7 @@ public class Toolbar extends JMenuBar {
 
 	private void initComponent() {
 		add(getFileMenu());
+		add(getPremiumMenu());
 	}
 
 	private JMenu getFileMenu() {
@@ -26,6 +37,23 @@ public class Toolbar extends JMenuBar {
 		JMenuItem adder = new JMenuItem("Bilder hinzufügen");
 
 		menu.add(adder);
+		return menu;
+	}
+
+	private JMenu getPremiumMenu() {
+		JMenu menu = new JMenu("Specials");
+
+		JMenuItem getAnimWindow = new JMenuItem("Zeig Animationsfenster");
+		getAnimWindow.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AnimateWindow w = new AnimateWindow();
+				Thread t = new Thread(w);
+				t.start();
+			}
+		});
+		menu.add(getAnimWindow);
+
 		return menu;
 	}
 }

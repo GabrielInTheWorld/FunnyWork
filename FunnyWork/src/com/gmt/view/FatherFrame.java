@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 
 import com.gmt.components.ImageContainer;
 import com.gmt.model.Model;
+import com.gmt.model.Toolbar;
 
 /**
  * Class for the whole window which will be shown
@@ -34,6 +35,7 @@ public class FatherFrame extends JFrame {
 		southPanel = new SouthPanel(model);
 		initComponents();
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 	private void initComponents() {
@@ -42,6 +44,7 @@ public class FatherFrame extends JFrame {
 		// add(southPanel, BorderLayout.SOUTH);
 		JScrollPane scrollPane = new JScrollPane(southPanel);
 		add(scrollPane, BorderLayout.SOUTH);
+		setJMenuBar(new Toolbar());
 		pack();
 	}
 
