@@ -7,6 +7,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import com.gmt.components.SearchTree;
 import com.gmt.view.AnimateWindow;
 
 public class Toolbar extends JMenuBar {
@@ -53,6 +54,19 @@ public class Toolbar extends JMenuBar {
 			}
 		});
 		menu.add(getAnimWindow);
+
+		JMenuItem showTree = new JMenuItem("Zeige Suchbaum");
+		showTree.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SearchTree<Integer> t = new SearchTree<Integer>();
+				for (int i = 0; i < 100; ++i) {
+					int rand = (int) (Math.random() * 100);
+					t.insert(rand);
+				}
+				t.printInorder();
+			}
+		});
 
 		return menu;
 	}

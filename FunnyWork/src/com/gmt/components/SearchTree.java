@@ -64,8 +64,32 @@ public class SearchTree<T extends Comparable<T>> {
 			return null;
 	}
 
-	public void printInorder() {
+	public void printPreorder() {
+		printPreorder(root);
+	}
 
+	private void printPreorder(Node node) {
+		if (node == null) {
+			return;
+		} else {
+			System.out.println(node.value);
+			printPreorder(node.left);
+			printPreorder(node.right);
+		}
+	}
+
+	public void printInorder() {
+		printInorder(root);
+	}
+
+	private void printInorder(Node node) {
+		if (node == null) {
+			return;
+		} else {
+			printInorder(node.left);
+			System.out.println(node.value);
+			printInorder(node.right);
+		}
 	}
 
 	private Node root;
